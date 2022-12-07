@@ -9,7 +9,6 @@ from utils import prepare_data, get_file_content
 class Quipu(object):
     QUIPU_JS = "../build/index.js"
 
-    # TODO add y param
     def __init__(self, data = None, x = None, y = None, options = None):
         self.options = options or {}
         self.data = prepare_data(data, x, y)
