@@ -11,7 +11,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "devDependencies": {
     "@parcel/transformer-inline-string": "^2.8.0",
     "parcel": "^2.8.0"
