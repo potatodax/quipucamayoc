@@ -40,6 +40,7 @@ export interface MarkInstance {
   x: number;
   y: number;
   scaleX?: number;
+  textLabel?: string;
 }
 
 export interface SceneGraph {

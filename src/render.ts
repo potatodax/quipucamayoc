@@ -133,6 +133,34 @@ export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
           maxHeight = Math.max(maxHeight, customMark.height);
 
           container.push(customMark.newSVG);
+
+          if (
+            sceneGraph["mark"] === QuipuFoundation.PendantCord &&
+            instance.textLabel
+          ) {
+            const labelFontSize = 12;
+            const labelX = instance.x;
+            const labelY = instance.y;
+            const labelYOffset = 475;
+            const labelText = instance.textLabel;
+
+            // labelWidthEstimate is adapted from
+            // https://github.com/vega/vega/blob/825bfaba6ccfe3306183df22b8c955a07bb30714/packages/vega-scenegraph/src/util/text.js
+            const labelWidthEstimate = Math.floor(
+              labelText.length * labelFontSize * 0.8
+            );
+            const labelHeight = Math.cos(Math.PI / 4) * labelWidthEstimate;
+
+            const pendantLabel = `<text x="${labelX}" y="${
+              labelY + labelYOffset
+            }" fill="#312B2B" transform="rotate(45, ${labelX}, ${
+              labelY + labelYOffset
+            })" style="font-size: ${labelFontSize}px; font-family: sans-serif">${labelText}</text>`;
+
+            container.push(pendantLabel);
+
+            maxHeight = Math.max(maxHeight, labelHeight + labelYOffset);
+          }
         }
       });
     }

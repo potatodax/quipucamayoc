@@ -5,10 +5,11 @@ import {
   SceneGraph,
 } from "./utils";
 
-const createPendantCords = (cordCount: number): MarkInstance[] => {
-  const cords = [...Array(cordCount).keys()].map((idx) => ({
+const createPendantCords = (pendantCords: PendantCord[]): MarkInstance[] => {
+  const cords = pendantCords.map((pendant, idx) => ({
     x: idx * 30 + 40,
     y: 0,
+    textLabel: pendant.cordName,
   }));
 
   return cords;
@@ -63,7 +64,6 @@ const getBackgroundScaleXFactor = (
 
 export const createSceneGraph = (pendantCords: PendantCord[]): SceneGraph => {
   const sceneGraph = {
-    // TODO determine grid width programmatically
     mark: QuipuFoundation.Grid,
     markInstances: [
       {
@@ -90,7 +90,7 @@ export const createSceneGraph = (pendantCords: PendantCord[]): SceneGraph => {
           },
           {
             mark: QuipuFoundation.PendantCord,
-            markInstances: [...createPendantCords(pendantCords.length)],
+            markInstances: [...createPendantCords(pendantCords)],
             children: [...createKnots(pendantCords)],
           },
         ],
