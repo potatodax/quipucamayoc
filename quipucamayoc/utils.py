@@ -35,6 +35,8 @@ def prepare_data(data, label, value):
         raise ValueError('The `label` column of the `data` DataFrame must be of type string.')
     elif data.shape[0] > 1000:
         raise ValueError('DataFrame cannot have more than 1,000 rows.')
+    elif data[value].min() < 0:
+        raise ValueError('Integer values below 0 are not supported.')
     elif data[value].max() > 99999:
         raise ValueError('Integer values above 99,999 are not supported.')
     else:
