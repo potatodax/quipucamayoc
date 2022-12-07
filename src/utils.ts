@@ -31,6 +31,11 @@ export enum QuipuOverhandKnot {
   Nine = 90,
 }
 
+export interface PendantCord {
+  cordName: string;
+  cordValue: number;
+}
+
 export interface MarkInstance {
   x: number;
   y: number;

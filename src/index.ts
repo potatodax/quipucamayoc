@@ -1,13 +1,17 @@
 // import svgDonut from "bundle-text:../assets/donut.svg";
 import { renderSceneGraph } from "./render";
 import { createSceneGraph } from "./sceneGraph";
+import { PendantCord } from "./utils";
 
 // element.append(svgDonut);
 
-const num_list = [0, 1, 50501, 99999];
-// const num_list = [0, 110, 20, 3, 12, 99999];
+// data comes from self.data in quipucamayoc.py
+const pendantCordsData: PendantCord[] = data.map((cord) => ({
+  cordName: cord[x],
+  cordValue: cord[y],
+}));
 
-const testQuipuSceneGraph = createSceneGraph(num_list);
+const testQuipuSceneGraph = createSceneGraph(pendantCordsData);
 
 renderSceneGraph(testQuipuSceneGraph);
 

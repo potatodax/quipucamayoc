@@ -1,4 +1,9 @@
-import { MarkInstance, QuipuFoundation, SceneGraph } from "./utils";
+import {
+  MarkInstance,
+  PendantCord,
+  QuipuFoundation,
+  SceneGraph,
+} from "./utils";
 
 const createPendantCords = (cordCount: number): MarkInstance[] => {
   const cords = [...Array(cordCount).keys()].map((idx) => ({
@@ -9,11 +14,11 @@ const createPendantCords = (cordCount: number): MarkInstance[] => {
   return cords;
 };
 
-const createKnots = (nums: number[]): SceneGraph[] => {
+const createKnots = (pendantCords: PendantCord[]): SceneGraph[] => {
   let knotsDictionary: Record<number, MarkInstance[]> = {};
 
-  nums.forEach((num, numIdx) => {
-    const digitsArray = num.toString().split("").map(Number);
+  pendantCords.forEach((pendant, pendantIdx) => {
+    const digitsArray = pendant.cordValue.toString().split("").map(Number);
     const digitsLen = digitsArray.length;
 
     digitsArray.forEach((digit, digitIdx) => {
@@ -23,7 +28,7 @@ const createKnots = (nums: number[]): SceneGraph[] => {
       const yBase = 5 - digitsLen + digitIdx + 1;
       const y = yBase * 90 - 60;
       const knotID = yBase === 5 ? digit : digit * 10;
-      const x = numIdx * 30 + (knotID === 1 ? 32 : knotID < 10 ? 29 : 35);
+      const x = pendantIdx * 30 + (knotID === 1 ? 32 : knotID < 10 ? 29 : 35);
       const knotInstance = { x: x, y: y };
 
       if (knotsDictionary[knotID]) {
@@ -56,18 +61,26 @@ const getBackgroundScaleXFactor = (
   return ((cordCount - 1) * 30) / svgWidth + 1;
 };
 
-export const createSceneGraph = (nums: number[]): SceneGraph => {
+export const createSceneGraph = (pendantCords: PendantCord[]): SceneGraph => {
   const sceneGraph = {
     // TODO determine grid width programmatically
     mark: QuipuFoundation.Grid,
     markInstances: [
-      { x: 16, y: 20, scaleX: getBackgroundScaleXFactor(nums.length, 43) },
+      {
+        x: 16,
+        y: 20,
+        scaleX: getBackgroundScaleXFactor(pendantCords.length, 43),
+      },
     ],
     children: [
       {
         mark: QuipuFoundation.PrimaryCord,
         markInstances: [
-          { x: 16, y: 6, scaleX: getBackgroundScaleXFactor(nums.length, 45) },
+          {
+            x: 16,
+            y: 6,
+            scaleX: getBackgroundScaleXFactor(pendantCords.length, 45),
+          },
         ],
         children: [
           {
@@ -77,8 +90,8 @@ export const createSceneGraph = (nums: number[]): SceneGraph => {
           },
           {
             mark: QuipuFoundation.PendantCord,
-            markInstances: [...createPendantCords(nums.length)],
-            children: [...createKnots(nums)],
+            markInstances: [...createPendantCords(pendantCords.length)],
+            children: [...createKnots(pendantCords)],
           },
         ],
       },
