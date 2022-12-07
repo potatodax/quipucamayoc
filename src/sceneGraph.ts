@@ -23,7 +23,7 @@ const createKnots = (nums: number[]): SceneGraph[] => {
       const yBase = 5 - digitsLen + digitIdx + 1;
       const y = yBase * 90 - 60;
       const knotID = yBase === 5 ? digit : digit * 10;
-      const x = numIdx * 30 + (knotID < 10 ? 29 : 35);
+      const x = numIdx * 30 + (knotID === 1 ? 32 : knotID < 10 ? 29 : 35);
       const knotInstance = { x: x, y: y };
 
       if (knotsDictionary[knotID]) {
