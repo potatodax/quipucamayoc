@@ -33,6 +33,8 @@ def prepare_data(data, x, y):
         raise ValueError('The `y` column of the `data` DataFrame must be of type integer.')
     elif not pd.api.types.is_string_dtype(data[x]):
         raise ValueError('The `x` column of the `data` DataFrame must be of type string.')
+    elif data.shape[0] > 1000:
+        raise ValueError('DataFrame cannot have more than 1,000 rows.')
     elif data[y].max() > 99999:
         raise ValueError('Integer values above 99,999 are not supported.')
     else:
