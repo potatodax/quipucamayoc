@@ -1,6 +1,19 @@
 import svgDonut from "bundle-text:../assets/donut.svg";
+import svgEndKnot from "bundle-text:../assets/end-knot.svg";
+import svgPrimaryCord from "bundle-text:../assets/primary-cord.svg";
+import svgPendantCord from "bundle-text:../assets/pendant-cord.svg";
+import svgGrid from "bundle-text:../assets/grid.svg";
+// import svgLongKnotOne from "bundle-text:../assets/ .svg"
+// import svgLongKnotTwo from "bundle-text:../assets/ .svg"
+// import svgLongKnotThree from "bundle-text:../assets/ .svg"
+// import svgLongKnotFour from "bundle-text:../assets/ .svg"
+// import svgLongKnotFive from "bundle-text:../assets/ .svg"
+// import svgLongKnotSix from "bundle-text:../assets/ .svg"
+// import svgLongKnotSeven from "bundle-text:../assets/ .svg"
+// import svgLongKnotEight from "bundle-text:../assets/ .svg"
+// import svgLongKnotNine from "bundle-text:../assets/ .svg"
 
-element.append(svgDonut);
+// element.append(svgDonut);
 
 enum QuipuFoundation {
   EndKnot = "ENDKNOT",
@@ -51,7 +64,7 @@ interface SceneGraph {
 const createPendantCords = (cordCount: number): MarkInstance[] => {
   // TODO verify this way of setting x coord works (like does the spacing work okay?)
   const cords = [...Array(cordCount).keys()].map((n) => ({
-    x: n * 30,
+    x: n * 30 + 40,
     y: 0,
   }));
 
@@ -69,7 +82,7 @@ const createKnots = (nums: number[]): SceneGraph[] => {
       if (!digit) {
         return;
       }
-      const x = numIdx * 30;
+      const x = numIdx * 30 + 40;
       // TODO determine better y-coord algorithm
       const y = 5 - digitsLen + digitIdx + 1;
 
@@ -104,12 +117,12 @@ const sceneGraphFactory = (nums: number[]): SceneGraph => {
   const sceneGraph = {
     // TODO determine grid width programmatically
     mark: QuipuFoundation.Grid,
-    markInstances: [{ x: 0, y: 0 }],
+    markInstances: [{ x: 0, y: 6 }],
     children: [
       {
         // TODO determine primary cord width programmatically
         mark: QuipuFoundation.PrimaryCord,
-        markInstances: [{ x: 0, y: 0 }],
+        markInstances: [{ x: 0, y: 6 }],
         children: [
           {
             mark: QuipuFoundation.EndKnot,
@@ -129,5 +142,101 @@ const sceneGraphFactory = (nums: number[]): SceneGraph => {
   return sceneGraph;
 };
 
+const getSVG = (
+  mark: QuipuFoundation | QuipuLongKnot | QuipuOverhandKnot
+): string | undefined => {
+  switch (mark) {
+    case QuipuFoundation.EndKnot:
+      return svgEndKnot;
+    case QuipuFoundation.PrimaryCord:
+      return svgPrimaryCord;
+    case QuipuFoundation.PendantCord:
+      return svgPendantCord;
+    case QuipuFoundation.Grid:
+      return svgGrid;
+    // case QuipuLongKnot.One:
+    //   return svgLongKnotOne;
+    // case QuipuLongKnot.Two:
+    //   return svgLongKnotTwo;
+    // case QuipuLongKnot.Three:
+    //   return svgLongKnotThree;
+    // case QuipuLongKnot.Four:
+    //   return svgLongKnotFour;
+    // case QuipuLongKnot.Five:
+    //   return svgLongKnotFive;
+    // case QuipuLongKnot.Six:
+    //   return svgLongKnotSix;
+    // case QuipuLongKnot.Seven:
+    //   return svgLongKnotSeven;
+    // case QuipuLongKnot.Eight:
+    //   return svgLongKnotEight;
+    // case QuipuLongKnot.Nine:
+    //   return svgLongKnotNine;
+    default:
+      console.log("Could not find SVG for this mark");
+      break;
+  }
+};
+
+const getCustomSVG = (
+  svgString: string,
+  attributes: MarkInstance
+): { newSVG: string; width: number; height: number } | undefined => {
+  const viewBoxMatch = svgString.match(/viewBox="([^"]+)"/);
+
+  if (viewBoxMatch) {
+    let [minX, minY, width, height] = viewBoxMatch[1].split(" ").map(Number);
+    minX = minX + attributes.x * -1;
+    minY = minY + attributes.y * -1;
+    width = width + attributes.x;
+    height = height + attributes.y;
+
+    const newViewBox = [minX, minY, width, height].join(" ");
+
+    const newSVG = svgString
+      .replace(/viewBox="([^"]+)"/, `viewBox="${newViewBox}"`)
+      .replace(/width="([^"]+)"/, `width="${width}"`)
+      .replace(/height="([^"]+)"/, `height="${height}"`);
+
+    return { newSVG, width, height };
+  }
+};
+
+const renderer = (sceneGraph: SceneGraph): void => {
+  let container: string[] = [];
+  let maxHeight = 0;
+  let maxWidth = 0;
+
+  const traverse = (sceneGraph: SceneGraph): void => {
+    const mark = getSVG(sceneGraph["mark"]);
+
+    if (mark) {
+      sceneGraph["markInstances"].forEach((instance) => {
+        const customMark = getCustomSVG(mark, instance);
+
+        if (customMark) {
+          maxWidth = Math.max(maxWidth, customMark.width);
+          maxHeight = Math.max(maxHeight, customMark.height);
+
+          container.push(customMark.newSVG);
+        }
+      });
+    }
+
+    sceneGraph.children.forEach((child) => traverse(child));
+  };
+
+  traverse(sceneGraph);
+
+  element.append(
+    `<svg width="${maxWidth}" height="${maxHeight}" viewBox="0 0 ${maxWidth} ${maxHeight}">${container.join(
+      ""
+    )}</svg>`
+  );
+};
+
 const num_list = [0, 110, 20, 3, 12];
-console.log(sceneGraphFactory(num_list));
+
+const testQuipuSceneGraph = sceneGraphFactory(num_list);
+
+renderer(testQuipuSceneGraph);
