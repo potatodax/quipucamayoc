@@ -10,3 +10,5 @@ const num_list = [0, 1, 50501, 99999];
 const testQuipuSceneGraph = createSceneGraph(num_list);
 
 renderSceneGraph(testQuipuSceneGraph);
+
+console.log(x, y, data);

@@ -13,13 +13,20 @@ class Quipu(object):
     def __init__(self, data = None, x = None, y = None, options = None):
         self.options = options or {}
         self.data = prepare_data(data, x, y)
+        self.x = x
+        self.y = y
+
+    def _stringify_df(self):
+        stringified_df = f'const x="{self.x}"; const y="{self.y}"; const data={self.data};'
+        return stringified_df
 
     def _create_js_string(self, id, **kwds):
         template = get_file_content(self.QUIPU_JS)
-        payload = template.format(
+        js_payload = template.format(
             id=id,
             opt=json.dumps(self.options, **kwds),
         )
+        payload = self._stringify_df() + js_payload
         return payload
 
     def viewdata(self):
