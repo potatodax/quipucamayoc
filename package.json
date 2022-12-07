@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "source": "src/index.ts",
   "description": "",
-  "main": "build/index.js",
+  "main": "quipucamayoc/build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build",
-    "start": "node build/index.js"
+    "build": "parcel build"
   },
   "keywords": [],
   "author": "",

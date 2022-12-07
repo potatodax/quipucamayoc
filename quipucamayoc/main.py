@@ -1,13 +1,13 @@
 import json
 import uuid
 from IPython.display import Javascript, display
-from utils import prepare_data, get_file_content
+from .utils import prepare_data, get_file_content
 
 # Inspired and adapted from https://github.com/vega/ipyvega/blob/master/vega/base.py
 # and https://github.com/vega/ipyvega/blob/master/vega/utils.py
 
 class Quipu(object):
-    QUIPU_JS = "../build/index.js"
+    QUIPU_JS = "build/index.js"
 
     def __init__(self, data = None, x = None, y = None, options = None):
         self.options = options or {}

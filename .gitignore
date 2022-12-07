@@ -2,6 +2,8 @@
 node_modules
 build/
 .parcel-cache
+quipucamayoc.egg-info
+demo
 
 # local env files
 env
