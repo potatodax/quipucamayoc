@@ -35,8 +35,6 @@ export interface MarkInstance {
   x: number;
   y: number;
   scaleX?: number;
-  // height: number;
-  // width: number;
 }
 
 export interface SceneGraph {

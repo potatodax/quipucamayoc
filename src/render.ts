@@ -98,15 +98,18 @@ const customizeSVG = (
 
     const newViewBox = [minX, minY, width, height].join(" ");
 
+    // newSVG assumes that:
+    // only the primary cord and grid get scaleX attributes
+    // and that the primary cord and grid are only made of <line > tags
     const newSVG = svgString
       .replace(/viewBox="([^"]+)"/, `viewBox="${newViewBox}"`)
       .replace(/width="([^"]+)"/, `width="${width}"`)
       .replace(/height="([^"]+)"/, `height="${height}"`)
       .replace(
-        /<path /,
+        /<line /g,
         attributes.scaleX
-          ? `<path transform="scale(${attributes.scaleX}, 1)"`
-          : "<path "
+          ? `<line transform="scale(${attributes.scaleX}, 1)"`
+          : "<line "
       );
 
     return { newSVG, width, height };

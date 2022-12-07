@@ -4,7 +4,8 @@ import { createSceneGraph } from "./sceneGraph";
 
 // element.append(svgDonut);
 
-const num_list = [0, 110, 20, 3, 12, 99999];
+const num_list = [0, 1, 50501, 99999];
+// const num_list = [0, 110, 20, 3, 12, 99999];
 
 const testQuipuSceneGraph = createSceneGraph(num_list);
 

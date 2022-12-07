@@ -49,16 +49,25 @@ const createKnots = (nums: number[]): SceneGraph[] => {
   return sceneGraph;
 };
 
+const getBackgroundScaleXFactor = (
+  cordCount: number,
+  svgWidth: number
+): number => {
+  return ((cordCount - 1) * 30) / svgWidth + 1;
+};
+
 export const createSceneGraph = (nums: number[]): SceneGraph => {
   const sceneGraph = {
     // TODO determine grid width programmatically
     mark: QuipuFoundation.Grid,
-    markInstances: [{ x: 22, y: 20 }],
+    markInstances: [
+      { x: 16, y: 20, scaleX: getBackgroundScaleXFactor(nums.length, 43) },
+    ],
     children: [
       {
         mark: QuipuFoundation.PrimaryCord,
         markInstances: [
-          { x: 16, y: 6, scaleX: ((nums.length - 1) * 30) / 45 + 1 },
+          { x: 16, y: 6, scaleX: getBackgroundScaleXFactor(nums.length, 45) },
         ],
         children: [
           {
