@@ -117,7 +117,7 @@ const customizeSVG = (
 };
 
 export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
-  let container: string[] = [];
+  let stringContainer: string[] = [];
   let maxMarkHeight = 0;
   let maxMarkWidth = 0;
   let maxLabelHeight = 0;
@@ -133,7 +133,7 @@ export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
           maxMarkWidth = Math.max(maxMarkWidth, customMark.width);
           maxMarkHeight = Math.max(maxMarkHeight, customMark.height);
 
-          container.push(customMark.newSVG);
+          stringContainer.push(customMark.newSVG);
 
           if (
             sceneGraph["mark"] === QuipuFoundation.PendantCord &&
@@ -151,7 +151,6 @@ export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
               labelText.length * labelFontSize * 0.8
             );
             const labelHeight = Math.cos(Math.PI / 4) * labelWidthEstimate;
-            console.log(labelWidthEstimate, labelHeight);
 
             const pendantLabel = `<text x="${labelX}" y="${
               labelY + labelYOffset
@@ -159,7 +158,7 @@ export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
               labelY + labelYOffset
             })" style="font-size: ${labelFontSize}px; font-family: sans-serif">${labelText}</text>`;
 
-            container.push(pendantLabel);
+            stringContainer.push(pendantLabel);
 
             maxLabelHeight = Math.max(maxLabelHeight, labelHeight);
           }
@@ -177,6 +176,6 @@ export const renderSceneGraph = (sceneGraph: SceneGraph): void => {
       maxMarkHeight + maxLabelHeight
     }" viewBox="0 0 ${maxMarkWidth} ${
       maxMarkHeight + maxLabelHeight
-    }" >${container.join("")}</svg></div>`
+    }" >${stringContainer.join("")}</svg></div>`
   );
 };

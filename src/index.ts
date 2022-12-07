@@ -11,5 +11,3 @@ const pendantCordsData: PendantCord[] = data.map((cord) => ({
 const testQuipuSceneGraph = createSceneGraph(pendantCordsData);
 
 renderSceneGraph(testQuipuSceneGraph);
-
-console.log(x, y, data);
