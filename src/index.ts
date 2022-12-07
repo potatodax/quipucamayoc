@@ -37,7 +37,7 @@ element.append(`<svg width="408" height="408" viewBox="0 0 408 408" fill="none" 
 </svg>`);
 
 const why = () => {
-  console.log("whyyyyy");
+  console.log("whyyyyy?");
 };
 
 why();

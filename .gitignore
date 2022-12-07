@@ -3,7 +3,8 @@ node_modules
 build/
 python/__pycache__
 python/.ipynb_checkpoints
-python/Test.ipynb
+*.ipynb
+.parcel-cache
 
 # local env files
 env
