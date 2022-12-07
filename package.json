@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.8.0",
     "parcel": "^2.8.0"
   }
 }
