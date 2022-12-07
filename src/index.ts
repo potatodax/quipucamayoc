@@ -35,3 +35,9 @@ element.append(`<svg width="408" height="408" viewBox="0 0 408 408" fill="none" 
 <path d="M275.009 82C270.694 83.2515 266.169 88.6732 263.159 92.0427" stroke="#CAEA87" stroke-width="10" stroke-linecap="round"/>
 <path d="M328.296 166.551C329.294 171.01 330.402 180.42 336 181.289" stroke="#CAEA87" stroke-width="10" stroke-linecap="round"/>
 </svg>`);
+
+const why = () => {
+  console.log("whyyyyy");
+};
+
+why();

@@ -1,7 +1,6 @@
 import json
 import uuid
 from IPython.display import Javascript, display
-# import codecs
 import os.path
 
 # Inspired from https://github.com/vega/ipyvega/blob/master/vega/base.py
@@ -13,9 +12,9 @@ def get_abs_path(path):
         path)
 
 def get_file_content(path):
-    # with codecs.open(get_abs_path(path), encoding='utf-8') as f:
     with open(get_abs_path(path), "r", encoding='utf-8') as f:
-        return f.read()
+        # escape single curly braces from JS file
+        return f.read().replace("{", "{{").replace("}","}}")
 
 def talk():
     print("hello cat world")
@@ -28,7 +27,6 @@ class Quipu(object):
 
     def _create_js_string(self, id, **kwds):
         template = get_file_content(self.QUIPU_JS)
-        # print(template)
         payload = template.format(
             id=id,
             opt=json.dumps(self.options, **kwds),
@@ -37,6 +35,3 @@ class Quipu(object):
 
     def display(self):
         display(Javascript(self._create_js_string(uuid.uuid4())))
-
-# quipu = Quipu()
-# quipu.display()
