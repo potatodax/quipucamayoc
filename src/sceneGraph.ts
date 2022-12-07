@@ -1,9 +1,8 @@
 import { MarkInstance, QuipuFoundation, SceneGraph } from "./utils";
 
 const createPendantCords = (cordCount: number): MarkInstance[] => {
-  // TODO verify this way of setting x coord works (like does the spacing work okay?)
-  const cords = [...Array(cordCount).keys()].map((n) => ({
-    x: n * 30 + 40,
+  const cords = [...Array(cordCount).keys()].map((idx) => ({
+    x: idx * 30 + 40,
     y: 0,
   }));
 
@@ -21,13 +20,11 @@ const createKnots = (nums: number[]): SceneGraph[] => {
       if (!digit) {
         return;
       }
-      const x = numIdx * 30 + 40;
-      // TODO determine better y-coord algorithm
-      const y = 5 - digitsLen + digitIdx + 1;
-
+      const yBase = 5 - digitsLen + digitIdx + 1;
+      const y = yBase * 90 - 60;
+      const knotID = yBase === 5 ? digit : digit * 10;
+      const x = numIdx * 30 + (knotID < 10 ? 29 : 35);
       const knotInstance = { x: x, y: y };
-
-      const knotID = y === 5 ? digit : digit * 10;
 
       if (knotsDictionary[knotID]) {
         knotsDictionary[knotID] = [...knotsDictionary[knotID], knotInstance];
@@ -56,12 +53,12 @@ export const createSceneGraph = (nums: number[]): SceneGraph => {
   const sceneGraph = {
     // TODO determine grid width programmatically
     mark: QuipuFoundation.Grid,
-    markInstances: [{ x: 0, y: 6 }],
+    markInstances: [{ x: 22, y: 20 }],
     children: [
       {
         // TODO determine primary cord width programmatically
         mark: QuipuFoundation.PrimaryCord,
-        markInstances: [{ x: 0, y: 6 }],
+        markInstances: [{ x: 16, y: 6 }],
         children: [
           {
             mark: QuipuFoundation.EndKnot,
