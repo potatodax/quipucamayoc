@@ -4,8 +4,8 @@ import { PendantCord } from "./utils";
 
 // data comes from self.data in quipucamayoc.py
 const pendantCordsData: PendantCord[] = data.map((cord) => ({
-  cordName: cord[x],
-  cordValue: cord[y],
+  cordLabel: cord[label],
+  cordValue: cord[value],
 }));
 
 const testQuipuSceneGraph = createSceneGraph(pendantCordsData);

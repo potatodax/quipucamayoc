@@ -9,14 +9,14 @@ from .utils import prepare_data, get_file_content
 class Quipu(object):
     QUIPU_JS = "build/index.js"
 
-    def __init__(self, data = None, x = None, y = None, options = None):
+    def __init__(self, data = None, label = None, value = None, options = None):
         self.options = options or {}
-        self.data = prepare_data(data, x, y)
-        self.x = x
-        self.y = y
+        self.data = prepare_data(data, label, value)
+        self.label = label
+        self.value = value
 
     def _stringify_df(self):
-        stringified_df = f'const x="{self.x}"; const y="{self.y}"; const data={self.data};'
+        stringified_df = f'const label="{self.label}"; const value="{self.value}"; const data={self.data};'
         return stringified_df
 
     def _create_js_string(self, id, **kwds):

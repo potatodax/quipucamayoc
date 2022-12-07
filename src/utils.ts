@@ -32,7 +32,7 @@ export enum QuipuOverhandKnot {
 }
 
 export interface PendantCord {
-  cordName: string;
+  cordLabel: string;
   cordValue: number;
 }
 

@@ -9,7 +9,7 @@ const createPendantCords = (pendantCords: PendantCord[]): MarkInstance[] => {
   const cords = pendantCords.map((pendant, idx) => ({
     x: idx * 30 + 40,
     y: 0,
-    textLabel: pendant.cordName,
+    textLabel: pendant.cordLabel,
   }));
 
   return cords;
