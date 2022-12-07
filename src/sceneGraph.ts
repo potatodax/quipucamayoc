@@ -56,9 +56,10 @@ export const createSceneGraph = (nums: number[]): SceneGraph => {
     markInstances: [{ x: 22, y: 20 }],
     children: [
       {
-        // TODO determine primary cord width programmatically
         mark: QuipuFoundation.PrimaryCord,
-        markInstances: [{ x: 16, y: 6 }],
+        markInstances: [
+          { x: 16, y: 6, scaleX: ((nums.length - 1) * 30) / 45 + 1 },
+        ],
         children: [
           {
             mark: QuipuFoundation.EndKnot,

@@ -92,7 +92,8 @@ const customizeSVG = (
     let [minX, minY, width, height] = viewBoxMatch[1].split(" ").map(Number);
     minX = minX + attributes.x * -1;
     minY = minY + attributes.y * -1;
-    width = width + attributes.x;
+    const widthBase = width + attributes.x;
+    width = attributes.scaleX ? attributes.scaleX * widthBase : widthBase;
     height = height + attributes.y;
 
     const newViewBox = [minX, minY, width, height].join(" ");
@@ -100,7 +101,13 @@ const customizeSVG = (
     const newSVG = svgString
       .replace(/viewBox="([^"]+)"/, `viewBox="${newViewBox}"`)
       .replace(/width="([^"]+)"/, `width="${width}"`)
-      .replace(/height="([^"]+)"/, `height="${height}"`);
+      .replace(/height="([^"]+)"/, `height="${height}"`)
+      .replace(
+        /<path /,
+        attributes.scaleX
+          ? `<path transform="scale(${attributes.scaleX}, 1)"`
+          : "<path "
+      );
 
     return { newSVG, width, height };
   }
