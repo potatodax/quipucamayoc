@@ -9,15 +9,24 @@ import svgEndKnot from "bundle-text:../assets/end-knot.svg";
 import svgPrimaryCord from "bundle-text:../assets/primary-cord.svg";
 import svgPendantCord from "bundle-text:../assets/pendant-cord.svg";
 import svgGrid from "bundle-text:../assets/grid.svg";
-// import svgLongKnotOne from "bundle-text:../assets/long-knot-1.svg";
-// import svgLongKnotTwo from "bundle-text:../assets/long-knot-2.svg";
-// import svgLongKnotThree from "bundle-text:../assets/long-knot-3.svg";
-// import svgLongKnotFour from "bundle-text:../assets/long-knot-4.svg";
-// import svgLongKnotFive from "bundle-text:../assets/long-knot-5.svg";
-// import svgLongKnotSix from "bundle-text:../assets/long-knot-6.svg";
-// import svgLongKnotSeven from "bundle-text:../assets/long-knot-7.svg";
-// import svgLongKnotEight from "bundle-text:../assets/long-knot-8.svg";
-// import svgLongKnotNine from "bundle-text:../assets/long-knot-9.svg";
+import svgLongKnotOne from "bundle-text:../assets/long-knot-1.svg";
+import svgLongKnotTwo from "bundle-text:../assets/long-knot-2.svg";
+import svgLongKnotThree from "bundle-text:../assets/long-knot-3.svg";
+import svgLongKnotFour from "bundle-text:../assets/long-knot-4.svg";
+import svgLongKnotFive from "bundle-text:../assets/long-knot-5.svg";
+import svgLongKnotSix from "bundle-text:../assets/long-knot-6.svg";
+import svgLongKnotSeven from "bundle-text:../assets/long-knot-7.svg";
+import svgLongKnotEight from "bundle-text:../assets/long-knot-8.svg";
+import svgLongKnotNine from "bundle-text:../assets/long-knot-9.svg";
+import svgOverhandKnotOne from "bundle-text:../assets/overhand-knot-1.svg";
+import svgOverhandKnotTwo from "bundle-text:../assets/overhand-knot-2.svg";
+import svgOverhandKnotThree from "bundle-text:../assets/overhand-knot-3.svg";
+import svgOverhandKnotFour from "bundle-text:../assets/overhand-knot-4.svg";
+import svgOverhandKnotFive from "bundle-text:../assets/overhand-knot-5.svg";
+import svgOverhandKnotSix from "bundle-text:../assets/overhand-knot-6.svg";
+import svgOverhandKnotSeven from "bundle-text:../assets/overhand-knot-7.svg";
+import svgOverhandKnotEight from "bundle-text:../assets/overhand-knot-8.svg";
+import svgOverhandKnotNine from "bundle-text:../assets/overhand-knot-9.svg";
 
 const getSVG = (
   mark: QuipuFoundation | QuipuLongKnot | QuipuOverhandKnot
@@ -31,24 +40,42 @@ const getSVG = (
       return svgPendantCord;
     case QuipuFoundation.Grid:
       return svgGrid;
-    // case QuipuLongKnot.One:
-    //   return svgLongKnotOne;
-    // case QuipuLongKnot.Two:
-    //   return svgLongKnotTwo;
-    // case QuipuLongKnot.Three:
-    //   return svgLongKnotThree;
-    // case QuipuLongKnot.Four:
-    //   return svgLongKnotFour;
-    // case QuipuLongKnot.Five:
-    //   return svgLongKnotFive;
-    // case QuipuLongKnot.Six:
-    //   return svgLongKnotSix;
-    // case QuipuLongKnot.Seven:
-    //   return svgLongKnotSeven;
-    // case QuipuLongKnot.Eight:
-    //   return svgLongKnotEight;
-    // case QuipuLongKnot.Nine:
-    //   return svgLongKnotNine;
+    case QuipuLongKnot.One:
+      return svgLongKnotOne;
+    case QuipuLongKnot.Two:
+      return svgLongKnotTwo;
+    case QuipuLongKnot.Three:
+      return svgLongKnotThree;
+    case QuipuLongKnot.Four:
+      return svgLongKnotFour;
+    case QuipuLongKnot.Five:
+      return svgLongKnotFive;
+    case QuipuLongKnot.Six:
+      return svgLongKnotSix;
+    case QuipuLongKnot.Seven:
+      return svgLongKnotSeven;
+    case QuipuLongKnot.Eight:
+      return svgLongKnotEight;
+    case QuipuLongKnot.Nine:
+      return svgLongKnotNine;
+    case QuipuOverhandKnot.One:
+      return svgOverhandKnotOne;
+    case QuipuOverhandKnot.Two:
+      return svgOverhandKnotTwo;
+    case QuipuOverhandKnot.Three:
+      return svgOverhandKnotThree;
+    case QuipuOverhandKnot.Four:
+      return svgOverhandKnotFour;
+    case QuipuOverhandKnot.Five:
+      return svgOverhandKnotFive;
+    case QuipuOverhandKnot.Six:
+      return svgOverhandKnotSix;
+    case QuipuOverhandKnot.Seven:
+      return svgOverhandKnotSeven;
+    case QuipuOverhandKnot.Eight:
+      return svgOverhandKnotEight;
+    case QuipuOverhandKnot.Nine:
+      return svgOverhandKnotNine;
     default:
       console.log("Could not find SVG for this mark");
       break;
