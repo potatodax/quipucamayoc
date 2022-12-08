@@ -4,6 +4,7 @@ build/
 .parcel-cache
 quipucamayoc.egg-info
 demo
+dist
 
 # local env files
 env
