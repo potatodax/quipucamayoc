@@ -3,8 +3,8 @@ node_modules
 build/
 .parcel-cache
 quipucamayoc.egg-info
-demo
 dist
+.ipynb_checkpoints
 
 # local env files
 env
