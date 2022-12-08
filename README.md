@@ -1,12 +1,10 @@
 # Quipucamayoc
 
-## A high-level quipu visualization library for Python
+A high-level quipu visualization library for Python
 
 The `quipucamayoc` data visualization library reimagines the modern data science toolkit as one that includes indigenous modes of data communication. This library is based on Incan numeric quipus and works with Python in a Jupyter Notebook environment. I hope `quipucamayoc` inspires data scientists to approach their discipline as the weaving together of historical modes of representation with historical problems
 
 For more information on this library and quipus, visit the [`quipucamayoc` wiki page](https://github.com/potatodax/quipucamayoc/wiki/Quipucamayoc).
-
----
 
 # Project Structure
 
@@ -22,8 +20,6 @@ For more information on this library and quipus, visit the [`quipucamayoc` wiki 
 
 `quipucamayoc` Data Flow
 <img width="1000" alt="Purple and pink diagram of how data flows through the system" src="https://user-images.githubusercontent.com/86934143/206129010-bd283324-d79b-4203-bd6b-7d8eeafd84a6.png">
-
----
 
 # Installation
 
@@ -41,11 +37,9 @@ If successful, you should see the following at the end of the terminal output:
 Successfully installed quipucamayoc-0.1.0
 ```
 
----
-
 # Usage
 
-Examples of how `quipucamayoc` builds quipu charts can also be found in the [wiki page](https://github.com/potatodax/quipucamayoc/wiki/Quipucamayoc) and in the [demo notebook](https://github.com/potatodax/quipucamayoc/tree/main/demo).
+The [wiki page](https://github.com/potatodax/quipucamayoc/wiki/Quipucamayoc#demonstration) and the [demo notebook](https://github.com/potatodax/quipucamayoc/tree/main/demo) also show how `quipucamayoc` builds quipu charts.
 
 Here is a small example of how this library works in a Jupyter Notebook:
 
