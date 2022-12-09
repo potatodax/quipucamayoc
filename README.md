@@ -4,7 +4,7 @@ A high-level quipu visualization library for Python
 
 The `quipucamayoc` data visualization library reimagines the modern data science toolkit as one that includes indigenous modes of data communication. This library is based on Incan numeric quipus and works with Python in a Jupyter Notebook environment. I hope `quipucamayoc` inspires data scientists to approach their discipline as the weaving together of historical modes of representation with historical problems
 
-For more information on this library and quipus, visit the [`quipucamayoc` wiki page](https://github.com/potatodax/quipucamayoc/wiki/Quipucamayoc).
+:sparkles: For more information on this library and quipus, visit the [`quipucamayoc` wiki page](https://github.com/potatodax/quipucamayoc/wiki/Quipucamayoc). :sparkles:
 
 # Project Structure
 
@@ -23,7 +23,9 @@ For more information on this library and quipus, visit the [`quipucamayoc` wiki 
 
 # Installation
 
-Go to https://github.com/potatodax/quipucamayoc/releases/tag/v0.1.0 and download the [quipucamayoc-0.1.0.tar.gz](https://github.com/potatodax/quipucamayoc/releases/download/v0.1.0/quipucamayoc-0.1.0.tar.gz) file.
+First, go to https://github.com/potatodax/quipucamayoc/releases/tag/v0.1.0 and download the [quipucamayoc-0.1.0.tar.gz](https://github.com/potatodax/quipucamayoc/releases/download/v0.1.0/quipucamayoc-0.1.0.tar.gz) file.
+
+Then run:
 
 ```
 cd <directory where you downloaded the tar.gz file>
@@ -35,6 +37,14 @@ If successful, you should see the following at the end of the terminal output:
 ```
 [...]
 Successfully installed quipucamayoc-0.1.0
+```
+
+---
+
+:recycle: _Note_: To uninstall later, simply use:
+
+```
+pip3 uninstall quipucamayoc
 ```
 
 # Usage
