@@ -1,0 +1,5 @@
+ipython~=8.4.0
+ipython-genutils~=0.2.0
+notebook~=6.4.11
+pandas~=1.4.3
+vega-datasets~=0.7.0

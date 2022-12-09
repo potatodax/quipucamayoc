@@ -23,7 +23,9 @@ The `quipucamayoc` data visualization library reimagines the modern data science
 
 # Installation
 
-First, go to https://github.com/potatodax/quipucamayoc/releases/tag/v0.1.0 and download the [quipucamayoc-0.1.0.tar.gz](https://github.com/potatodax/quipucamayoc/releases/download/v0.1.0/quipucamayoc-0.1.0.tar.gz) file.
+Make sure you have everything from https://github.com/potatodax/quipucamayoc/blob/main/requirements.txt installed.
+
+Go to https://github.com/potatodax/quipucamayoc/releases/tag/v0.1.0 and download the [quipucamayoc-0.1.0.tar.gz](https://github.com/potatodax/quipucamayoc/releases/download/v0.1.0/quipucamayoc-0.1.0.tar.gz) file.
 
 Then run:
 
